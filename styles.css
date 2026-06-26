@@ -1,0 +1,308 @@
+:root {
+  color-scheme: dark;
+  --bg: #151313;
+  --panel: #211d1a;
+  --text: #fff8ee;
+  --muted: #c9bbb0;
+  --fire: #ff5a2e;
+  --ice: #67d8ff;
+  --gold: #ffd36d;
+  --danger: #ff3762;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 90, 46, 0.24), transparent 28rem),
+    radial-gradient(circle at 78% 72%, rgba(103, 216, 255, 0.2), transparent 26rem),
+    linear-gradient(135deg, #17120f, #10151a 48%, #16100f);
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.game-shell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 20px;
+}
+
+.stage {
+  width: min(1120px, 100%);
+}
+
+.topbar,
+.controls,
+.track-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4.7rem);
+  line-height: 0.9;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(78px, 1fr));
+  gap: 8px;
+}
+
+.stats div {
+  min-height: 64px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  background: rgba(18, 16, 15, 0.72);
+}
+
+.stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stats strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.5rem;
+}
+
+.arena {
+  position: relative;
+  margin: 22px 0 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36);
+  aspect-ratio: 16 / 9;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.countdown,
+.judgement {
+  position: absolute;
+  inset-inline: 0;
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+
+.countdown {
+  top: 12%;
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  font-weight: 900;
+}
+
+.judgement {
+  bottom: 8%;
+  color: var(--gold);
+  font-size: clamp(1.1rem, 4vw, 2.7rem);
+  font-weight: 950;
+  opacity: 0.95;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr minmax(120px, 170px) 1fr;
+}
+
+.pad,
+.start {
+  min-height: 76px;
+  border-radius: 8px;
+  font-weight: 950;
+  transition:
+    transform 140ms ease,
+    filter 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.pad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: clamp(1.1rem, 4vw, 1.9rem);
+}
+
+.pad kbd {
+  min-width: 34px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 0.9rem;
+}
+
+.fire {
+  background: linear-gradient(135deg, #ff3f28, #ff9d42);
+  box-shadow: 0 14px 32px rgba(255, 90, 46, 0.32);
+}
+
+.ice {
+  background: linear-gradient(135deg, #38b9ff, #a8f4ff);
+  color: #05202b;
+  box-shadow: 0 14px 32px rgba(103, 216, 255, 0.26);
+}
+
+.start {
+  background: #fff8ee;
+  color: #17120f;
+  font-size: 1.1rem;
+}
+
+.pad:active,
+.pad.active,
+.start:active {
+  transform: translateY(2px) scale(0.98);
+  filter: brightness(1.12);
+}
+
+.track-info,
+.songbar {
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.songbar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.songbar label,
+.songbar span,
+.songbar a {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.songbar select {
+  min-width: 0;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(18, 16, 15, 0.82);
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  padding: 0 12px;
+}
+
+.songbar a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.meter {
+  flex: 1;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.meter div {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--fire), var(--gold), var(--ice));
+}
+
+#hint {
+  width: min(410px, 44%);
+  margin: 0;
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+.credit {
+  min-height: 22px;
+  margin: 10px 0 0;
+  color: rgba(255, 248, 238, 0.72);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .game-shell {
+    padding: 12px;
+  }
+
+  .topbar,
+  .track-info {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats div {
+    min-height: 58px;
+    padding: 8px;
+  }
+
+  .stats strong {
+    font-size: 1.18rem;
+  }
+
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .start {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-height: 58px;
+  }
+
+  .pad {
+    min-height: 72px;
+  }
+
+  #hint {
+    width: 100%;
+    text-align: left;
+  }
+
+  .songbar {
+    grid-template-columns: auto 1fr;
+  }
+}

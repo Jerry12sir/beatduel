@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dance Fire and Ice</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="stage" aria-label="Dance Fire and Ice rhythm game">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Dance Fire and Ice</p>
+            <h1>Beat Duel</h1>
+          </div>
+          <div class="stats" aria-live="polite">
+            <div>
+              <span>Score</span>
+              <strong id="score">0</strong>
+            </div>
+            <div>
+              <span>Combo</span>
+              <strong id="combo">0</strong>
+            </div>
+            <div>
+              <span>Lives</span>
+              <strong id="lives">5</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="arena" id="arena">
+          <canvas id="gameCanvas" width="960" height="540"></canvas>
+          <div class="countdown" id="countdown">Ready?</div>
+          <div class="judgement" id="judgement">Press Start</div>
+        </div>
+
+        <div class="controls">
+          <button class="pad fire" id="fireButton" type="button" aria-label="Fire step">
+            <span>Fire</span>
+            <kbd>←</kbd>
+          </button>
+          <button class="start" id="startButton" type="button">Start</button>
+          <button class="pad ice" id="iceButton" type="button" aria-label="Ice step">
+            <span>Ice</span>
+            <kbd>→</kbd>
+          </button>
+        </div>
+
+        <div class="songbar">
+          <label for="songSelect">Song</label>
+          <select id="songSelect"></select>
+          <span id="songDuration">1:30</span>
+          <a id="songLink" href="https://ncs.io/FAVELA" target="_blank" rel="noreferrer">NCS page</a>
+        </div>
+
+        <div class="track-info">
+          <div class="meter">
+            <div id="progress"></div>
+          </div>
+          <p id="hint">Use ← for Fire and → for Ice. Hit on the glowing center beat.</p>
+        </div>
+
+        <p class="credit" id="credit"></p>
+      </section>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
